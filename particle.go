@@ -1,9 +1,10 @@
 package main
 
 type Particle struct {
-	data string
-	x    int
-	y    int
+	data     string
+	x        int
+	y        int
+	lifeTime int
 }
 
 func NewParticle(data string, x, y int) *Particle {
