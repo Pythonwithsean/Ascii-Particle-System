@@ -1,20 +1,32 @@
 package main
 
+import (
+	r "math/rand"
+	"time"
+)
+
 type Particle struct {
-	data     string
+	ascii    string
 	x        int
 	y        int
 	lifeTime int
 }
 
-func NewParticle(data string, x, y int) *Particle {
+var ascii = []string{"@", "}", "{"}
+
+func NewParticle(ascii string, x, y int) *Particle {
 	return &Particle{
-		data: data,
-		x:    x,
-		y:    y,
+		ascii:    ascii,
+		x:        x,
+		y:        y,
+		lifeTime: time.Now().Minute(),
 	}
 }
 
-func (p *Particle) moveLeft() {}
-
-func (p *Particle) moveRight() {}
+func createParticle() *Particle {
+	randX := r.Intn(10)
+	randY := r.Intn(10)
+	randAscii := r.Intn(3)
+	particle := NewParticle(ascii[randAscii], randX, randY)
+	return particle
+}

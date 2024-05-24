@@ -1,29 +1,33 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Render struct {
-	Screen [][]string
+	Board []string
 }
 
 func NewRender() *Render {
-
 	//Create Initial Row Buffer
-	grid := make([][]string, 30)
+	grid := make([]string, 10)
 	for x := 0; x < len(grid); x++ {
-		// For Every Row Creating a string Arr with 5 string
-		grid[x] = make([]string, 30)
 	}
 	// return the Render the object
 	return &Render{
-		Screen: grid,
+		Board: grid,
+	}
+}
+
+func addParticles(particle *Particle, board []string) {
+	for i, _ := range board {
+		board[i] = particle.ascii
 	}
 }
 
 // Render the board
 func (r *Render) RenderBoard() {
-	// fmt.Println(len(r.Screen))
-	for i := 0; i < len(r.Screen); i++ {
-		fmt.Println(r.Screen[i])
-	}
+	particle := createParticle()
+	addParticles(particle, r.Board)
+	fmt.Println(r.Board)
 }
